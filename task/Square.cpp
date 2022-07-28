@@ -23,6 +23,7 @@ void Square::Save(FILE* f_wright)
 {
 	char str[20] = { "Square" };
 	fwrite(str, 20, 1, f_wright);
+	int q = m_topLeftCorner_X;
 	fwrite(&m_topLeftCorner_X, sizeof(m_topLeftCorner_X), 1, f_wright);
 	fwrite(&m_topLeftCorner_Y, sizeof(m_topLeftCorner_Y), 1, f_wright);
 	fwrite(&m_sideLength, sizeof(m_sideLength), 1, f_wright);
@@ -31,13 +32,13 @@ void Square::Save(FILE* f_wright)
 // Считывание фигуры из файла.
 void Square::Load(FILE* f_read)
 {
-	char value_1[10]{'\0'}, value_2[10]{'\0'}, value_3[10]{'\0'};
-	fgets(value_1, sizeof(int), f_read);
-	m_topLeftCorner_X = atoi(value_1);
+	int value_1, value_2, value_3;
+	fread(&value_1, sizeof(value_1), 1, f_read);
+	m_topLeftCorner_X = value_1;
 
-	fgets(value_2, sizeof(int), f_read);
-	m_topLeftCorner_Y = atoi(value_2);
+	fread(&value_2, sizeof(value_2), 1, f_read);
+	m_topLeftCorner_Y = value_2;
 
-	fgets(value_3, sizeof(int), f_read);
-	m_sideLength = atoi(value_3);
+	fread(&value_3, sizeof(value_3), 1, f_read);
+	m_sideLength = value_3;
 }

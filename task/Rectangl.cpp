@@ -34,16 +34,16 @@ void Rectangl::Save(FILE* f_wright)
 // Считывание фигуры из файла.
 void Rectangl::Load(FILE* f_read)
 {
-	char value_1[10]{'\0'}, value_2[10]{'\0'}, value_3[10]{'\0'}, value_4[10]{'\0'};
-	fgets(value_1, sizeof(int), f_read);
-	m_topLeftCorner_X = atoi(value_1);
+	int value_1, value_2, value_3, value_4;
+	fread(&value_1, sizeof(value_1), 1, f_read);
+	m_topLeftCorner_X = value_1;
 
-	fgets(value_2, sizeof(int), f_read);
-	m_topLeftCorner_Y = atoi(value_2);
+	fread(&value_2, sizeof(value_2), 1, f_read);
+	m_topLeftCorner_Y = value_2;
 
-	fgets(value_3, sizeof(int), f_read);
-	width = atoi(value_3);
+	fread(&value_3, sizeof(value_3), 1, f_read);
+	width = value_3;
 
-	fgets(value_4, sizeof(int), f_read);
-	height = atoi(value_4);
+	fread(&value_4, sizeof(value_4), 1, f_read);
+	height = value_4;
 }

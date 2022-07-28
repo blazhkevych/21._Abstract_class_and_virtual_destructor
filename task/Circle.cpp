@@ -31,13 +31,13 @@ void Circle::Save(FILE* f_wright)
 // Считывание фигуры из файла.
 void Circle::Load(FILE* f_read)
 {
-	char value_1[10]{'\0'}, value_2[10]{'\0'}, value_3[10]{'\0'};
-	fgets(value_1, sizeof(int), f_read);
-	m_centerCoordinate_X = atoi(value_1);
+	int value_1, value_2, value_3;
+	fread(&value_1, sizeof(value_1), 1, f_read);
+	m_centerCoordinate_X = value_1;
 
-	fgets(value_2, sizeof(int), f_read);
-	m_centerCoordinate_Y = atoi(value_2);
+	fread(&value_2, sizeof(value_2), 1, f_read);
+	m_centerCoordinate_Y = value_2;
 
-	fgets(value_3, sizeof(int), f_read);
-	radius = atoi(value_3);
+	fread(&value_3, sizeof(value_3), 1, f_read);
+	radius = value_3;
 }

@@ -84,9 +84,9 @@ int main()
 		shapeArr[i]->Show();
 
 	// Сохранение в файл.
-	const char fileNameWrite[20]{ "shapes.txt" };
+	const char fileNameWrite[20]{ "shapes.bin" };
 	FILE* f_wright{ nullptr };
-	fopen_s(&f_wright, fileNameWrite, "wt");
+	fopen_s(&f_wright, fileNameWrite, "wb");
 	if (f_wright == nullptr)
 	{
 		perror("Error opening");
@@ -98,9 +98,9 @@ int main()
 	fclose(f_wright);
 
 	// Чтение из файла.
-	char fileNameRead[20]{ "shapes.txt" };
+	char fileNameRead[20]{ "shapes.bin" };
 	FILE* f_read{ nullptr };
-	fopen_s(&f_read, fileNameRead, "rt");
+	fopen_s(&f_read, fileNameRead, "rb");
 	if (f_read == nullptr)
 	{
 		perror("Error opening");
@@ -112,7 +112,7 @@ int main()
 	char whatIsThis[20]{ '\0' };
 	for (int i = 0; i < size; i++)
 	{
-		fgets(whatIsThis, sizeof(whatIsThis), f_read);
+		fread(whatIsThis, sizeof(whatIsThis), 1, f_read);
 		if (strcmp(whatIsThis, "Square") == 0)					// Определяем какой класс считываем.
 		{
 			p_base_class_for_file = new Square{ 0,0,0 };
